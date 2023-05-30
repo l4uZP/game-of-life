@@ -1,0 +1,18 @@
+.matrix-container {
+  background-color: #e6e6e6;
+  margin: 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  font-size: 5px;
+}
+
+.x-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.y-column {
+  border: 1px solid black;
+  height: 5px;
+  width: 5px;
+}

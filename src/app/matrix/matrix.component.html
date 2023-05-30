@@ -1,0 +1,7 @@
+<div class="matrix-container">
+  <div class="x-row" *ngFor="let x of this.matrixXArray">
+    <div class="y-column" *ngFor="let y of this.matrixYArray">
+      {{y?1:0}}
+    </div>
+  </div>
+</div>
