@@ -1,18 +1,33 @@
-.matrix-container {
-  background-color: #e6e6e6;
-  margin: 1.5rem;
+.container {
   width: fit-content;
-  height: fit-content;
-  font-size: 5px;
 }
 
-.x-row {
+.d-flex {
   display: flex;
-  align-items: stretch;
 }
 
-.y-column {
-  border: 1px solid black;
-  height: 5px;
+.justify-content-end {
+  justify-content: end;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
   width: 5px;
+  height: 5px;
+  border: 1px solid #ccc;
+}
+
+td:hover {
+  background-color: #565656;
+}
+
+.alive {
+  background-color: #000;
+}
+
+.dead {
+  background-color: #fff;
 }
