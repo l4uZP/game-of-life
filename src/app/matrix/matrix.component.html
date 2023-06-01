@@ -1,19 +1,59 @@
-<div class="container">
-  <div class="d-flex">
-    <table>
-      <tbody>
-      <tr *ngFor="let row of grid; let rowIndex = index">
-        <td *ngFor="let cell of row; let colIndex = index" (click)="setCell(rowIndex, colIndex)"
-            [ngClass]="{ 'alive': cell, 'dead': !cell }">
-        </td>
-      </tr>
-      </tbody>
-    </table>
+<div class="game-container">
+  <div class="matrix-container">
+    <div class="d-flex game-title">Game of Life</div>
+    <div class="d-flex">
+      <p class="purple-text" *ngIf="isPaused">Paused &parallel;</p>
+      <p class="purple-text" *ngIf="!isPaused">Running &blacktriangleright;</p>
+    </div>
+    <div class="d-flex">
+      <table>
+        <tbody>
+        <tr *ngFor="let row of grid; let rowIndex = index">
+          <td *ngFor="let cell of row; let colIndex = index" (click)="setCell(rowIndex, colIndex)"
+              [ngClass]="{ 'alive': cell, 'dead': !cell }">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex buttons-container">
+      <button class="btn" (click)="this.initGrid()">Reset &circlearrowleft;</button>
+      <button class="btn" (click)="this.resumeGame()">Play &blacktriangleright;</button>
+      <button class="btn" (click)="this.pauseGame()">Pause &parallel;</button>
+      <button class="btn" (click)="this.rules()">Next Step &raquo;</button>
+    </div>
   </div>
-  <div class="d-flex justify-content-end">
-    <button (click)="this.resetGrid()">Reset</button>
-    <button (click)="this.isPaused? this.resumeGame() : this.runGame()">Play</button>
-    <button (click)="this.pauseGame()">Pause</button>
-    <button (click)="this.updateGrid()">Next Step</button>
+
+  <div class="patterns-container">
+    <p class="white-title">Patterns</p>
+    <div class="pattern-card" (click)="this.createOscillator()">
+      <p class="purple-text">Oscillator</p>
+      <img class="pattern-img" src="assets/images/basic-oscillator.png" alt="oscillator">
+    </div>
+    <div class="pattern-card" (click)="this.createStaticLife()">
+      <p class="purple-text">Static life</p>
+      <img class="pattern-img" src="assets/images/block-static-life.png" alt="static-life">
+    </div>
+    <div class="pattern-card" (click)="this.createSpaceship()">
+      <p class="purple-text">Spaceship</p>
+      <img class="pattern-img" src="assets/images/spaceship.png" alt="spaceship">
+    </div>
+    <div class="pattern-card" (click)="this.createMethuselah()">
+      <p class="purple-text">Methuselah</p>
+      <img class="pattern-img" src="assets/images/methuselah.png" alt="methuselah">
+    </div>
   </div>
+</div>
+<div class="description-container">
+  <p class="white-title">&darr; Instructions &darr;</p>
+  <ul class="purple-text instructions">
+    <li>1. You can draw any pattern using your mouse.</li>
+    <li>2. You can also choose patterns from the options on the right side of the screen, which will be displayed on the
+      grid.
+    </li>
+    <li>3. To clear the grid use the "Reset" button.</li>
+    <li>4. Press "Play" to start reproducing the pattern indefinitely.</li>
+    <li>5. Press "Pause" to stop the reproduction.</li>
+    <li>6. Use the "Next Step" button to watch the reproduction step by step.</li>
+  </ul>
 </div>

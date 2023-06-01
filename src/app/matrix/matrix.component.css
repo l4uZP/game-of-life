@@ -1,17 +1,37 @@
-.container {
-  width: fit-content;
-}
+@import "src/styles.css";
 
-.d-flex {
+.game-container {
   display: flex;
+  justify-content: space-between;
 }
 
-.justify-content-end {
-  justify-content: end;
+.game-container .matrix-container {
+  padding: 1rem 2rem;
+  width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  background: linear-gradient(rgba(179, 224, 255, 0.2), rgba(179, 224, 255, 0.3));
+  backdrop-filter: blur(10px);
+}
+
+.matrix-container .game-title{
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.purple-text {
+  margin: 0;
+  padding: 0;
+  color: #9a92e5;
 }
 
 table {
   border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 td {
@@ -30,4 +50,75 @@ td:hover {
 
 .dead {
   background-color: #fff;
+}
+
+
+.buttons-container {
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.buttons-container button {
+  border-radius: 20px;
+  padding: 7px;
+  border: 0px;
+  width: 100px;
+  background: #47408d;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.buttons-container button:hover {
+  background: #36306b;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.game-container .patterns-container {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white-title {
+  color: white;
+  font-size: 20px;
+}
+
+.patterns-container .pattern-card {
+  padding: 0.5rem 1rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  background: linear-gradient(rgba(179, 224, 255, 0.2), rgba(179, 224, 255, 0.3));
+  backdrop-filter: blur(10px);
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.patterns-container .pattern-img {
+  margin-top: 3px;
+  max-height: 50px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-container .instructions {
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  background: linear-gradient(rgba(179, 224, 255, 0.2), rgba(179, 224, 255, 0.3));
+  backdrop-filter: blur(10px);
+  list-style: none;
 }
