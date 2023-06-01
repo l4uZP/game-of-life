@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatrixComponent implements OnInit {
   public grid: boolean[][] = [];
-  public isPaused: boolean;
-  private gridWidth: number = 100;
-  private gridHeight: number = 70;
+  public paused: boolean;
+  public gridWidth: number = 100;
+  public gridHeight: number = 70;
 
   constructor() {
-    this.isPaused = true;
+    this.paused = true;
     this.initGrid();
   }
 
@@ -34,11 +34,11 @@ export class MatrixComponent implements OnInit {
   }
 
   public resumeGame(): void {
-    this.isPaused = false;
+    this.paused = false;
   }
 
   public pauseGame(): void {
-    this.isPaused = true;
+    this.paused = true;
   }
 
   public rules(): void {
@@ -53,7 +53,7 @@ export class MatrixComponent implements OnInit {
         } else if (!cellIsAlive && aliveNeighbors === 3) {
           newGrid[row][col] = true; // Nace por reproducción
         } else {
-          newGrid[row][col] = cellIsAlive; // Vive
+          newGrid[row][col] = cellIsAlive; // Se mantiene viva
         }
       }
     }
@@ -100,12 +100,10 @@ export class MatrixComponent implements OnInit {
   }
 
   public createMethuselah(): void {
-    const row = Math.floor(Math.random() * (this.gridHeight - 3)); // Generar un número aleatorio para la fila
-    const col = Math.floor(Math.random() * (this.gridWidth - 3)); // Generar un número aleatorio para la columna
+    const row = Math.floor(Math.random() * (this.gridHeight - 3));
+    const col = Math.floor(Math.random() * (this.gridWidth - 3));
 
-    // Verificar si la posición generada está dentro de los límites del grid
     if (row >= 0 && row + 3 < this.gridHeight && col >= 0 && col + 3 < this.gridWidth) {
-      // Agregar el patrón del Matusalén en la posición aleatoria generada
       this.grid[row + 1][col + 2] = true;
       this.grid[row + 2][col] = true;
       this.grid[row + 2][col + 2] = true;
@@ -116,7 +114,7 @@ export class MatrixComponent implements OnInit {
 
   private async runGame(): Promise<void> {
     while (true) {
-      if (!this.isPaused) {
+      if (!this.paused) {
         this.rules();
         await this.sleep(700);
       } else {
@@ -132,7 +130,7 @@ export class MatrixComponent implements OnInit {
   private wait(): Promise<void> {
     return new Promise(resolve => {
       const intervalId = setInterval(() => {
-        if (!this.isPaused) {
+        if (!this.paused) {
           clearInterval(intervalId);
           resolve();
         }
